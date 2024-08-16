@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Human Verification</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      .no-ajax-content {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: #212833;
+        left: 0;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .no-ajax-message {
+        width: 70%;
+        background: #fff;
+        text-align: center;
+        padding: 80px 100px;
+        border-radius: 20px;
+        font-family: Verdana, sans-serif;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        margin: 150px auto 0 auto;
+      }
+
+      .no-ajax-message h3 {
+        color: #000;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .no-ajax-message h1 {
+        margin: 5px 0 0 0;
+        color: #fc4349;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .no-ajax-message p {
+        font-size: 1em;
+        color: #555;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="no-ajax-content">
+      <div class="no-ajax-message">
+        <h3>Huh.. wait a second!</h3>
+        <h1>Nosey little mouse, aren't you?</h1>
+        <p>There is nothing interesting here, no point wasting your time.</p>
+      </div>
+    </div>
+
+    <div class="human-verification-wrapper">
+      <h3>Human Verification</h3>
+      <p>
+        You are almost done! Click on the Verify Now button below to complete
+        human verification.
+      </p>
+      <div class="verification-premium-info-wrapper">
+        <div class="verification-premium-label">Unlocking premium for:</div>
+        <div
+          class="verification-premium-info animated bounceIn animation-delay-200"
+        >
+          <div class="verification-premium-info-label">Email Address:</div>
+          <div class="verification-premium-info-email-value"></div>
+        </div>
+      </div>
+      <i class="fas fa-spinner fa-spin"></i>
+      <div id="h-v-time-left-wrapper" class="h-v-time-left-wrapper">
+        <span>Time Left:</span>
+        <span id="human_verification_timer_time"></span>
+      </div>
+      <div
+        class="verification-button-wrapper animated bounceIn animation-delay-1000"
+      >
+        <a
+          id="verification-button"
+          class="ntflx-btn animated pulse infinite"
+          onclick="og_load()"
+          ><span>Verify Now</span></a
+        >
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function isAjaxRequest() {
+          return (
+            window.XMLHttpRequest &&
+            window.XMLHttpRequest.prototype.setRequestHeader !== undefined
+          );
+        }
+
+        if (!isAjaxRequest()) {
+          document.querySelector(".no-ajax-content").style.display = "flex";
+          document.querySelector(".human-verification-wrapper").style.display =
+            "none";
+        } else {
+          document.querySelector(".human-verification-wrapper").style.display =
+            "flex";
+          document.querySelector(".no-ajax-content").style.display = "none";
+        }
+      });
+
+      function og_load() {
+        alert("Verification initiated.");
+      }
+    </script>
+  </body>
+</html>

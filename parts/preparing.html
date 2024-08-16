@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preparing</title>
+    <style>
+      .no-ajax-content {
+        display: none;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        background: #212833;
+        left: 0;
+        top: 0;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .no-ajax-message {
+        width: 70%;
+        background: #fff;
+        text-align: center;
+        padding: 80px 100px;
+        border-radius: 20px;
+        font-family: Verdana, sans-serif;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2);
+        margin: 150px auto 0 auto;
+      }
+
+      .no-ajax-message h3 {
+        color: #000;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      .no-ajax-message h1 {
+        margin: 5px 0 0 0;
+        color: #fc4349;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .no-ajax-message p {
+        font-size: 1em;
+        color: #555;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="no-ajax-content">
+      <div class="no-ajax-message">
+        <h3>Huh.. wait a second!</h3>
+        <h1>Nosey little mouse, aren't you?</h1>
+        <p>There is nothing interesting here, no point wasting your time.</p>
+      </div>
+    </div>
+
+    <div class="preparing-wrapper">
+      <div class="loader-wrapper">
+        <div class="loader">Loading...</div>
+      </div>
+      <div class="console-msg-wrapper animated pulse infinite">
+        <div class="console-msg">Preparing to unlock premium account...</div>
+      </div>
+      <div class="console-loadbar-wrapper">
+        <div id="progressBarConsole" class="console-loadbar animated bounceIn">
+          <div></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        function isAjaxRequest() {
+          return (
+            window.XMLHttpRequest &&
+            window.XMLHttpRequest.prototype.setRequestHeader !== undefined
+          );
+        }
+
+        if (!isAjaxRequest()) {
+          document.querySelector(".no-ajax-content").style.display = "flex";
+          document.querySelector(".preparing-wrapper").style.display = "none";
+        } else {
+          document.querySelector(".preparing-wrapper").style.display = "flex";
+          document.querySelector(".no-ajax-content").style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
